@@ -19,13 +19,42 @@
 <body>
     <div class="container">
         <h2>Student Signup</h2>
-        <form method="post">
+        {% if error %}
+            <div class="error" style="color: red;">{{ error }}</div>
+        {% endif %}
+        {% if success %}
+            <div class="success" style="color: green;">{{ success }}</div>
+        {% endif %}
+        <p>Please fill in the form below to create a student account.</p>
+         <!-- Form for student signup -->
+        <form method="post" action="{% url 'student-signup-code' %}">
             {% csrf_token %}
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
 
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
+            <label for="student_id">Student ID</label>
+            <input type="text" id="student_id" name="student_id" required>
+
+            <label for="department">Department</label>
+            <select id="department" name="department" required>
+                <option value="">Select Department</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Physics">Physics</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Biology">Biology</option>
+                <option value="Engineering">Engineering</option>
+            </select>
+
+            <label for="level">Level</label>
+            <select id="level" name="level" required>
+                <option value="">Select Level</option>
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="Graduate">Graduate</option>
+                <option value="PhD">PhD</option>
+            </select>
 
             <label for="password1">Password</label>
             <input type="password" id="password1" name="password1" required>

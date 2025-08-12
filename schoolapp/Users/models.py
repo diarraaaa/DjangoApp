@@ -6,7 +6,7 @@ class Student(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     student_id=models.CharField(max_length=20,unique=True)
     level=models.CharField(max_length=10)
-    departement=models.ForeignKey('Courses.Department',on_delete=models.SET_NULL,null=True)
+    department=models.ForeignKey('Courses.Department',on_delete=models.SET_NULL,null=True)
     
     def __str__(self):
         return f"{self.user.username} {self.student_id}"
